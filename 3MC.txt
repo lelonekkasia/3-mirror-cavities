@@ -1,0 +1,18 @@
+L_1 = np.floor(L_1_macro/wavelength)*wavelength+delta
+L_2 = np.floor(L_2_macro/wavelength)*wavelength
+
+phi_1 = -2*np.pi*(nu+c/wavelength)*L_1/c         # first phase factor
+phi_2 = -2*np.pi*(nu+c/wavelength)*L_2/c         # second phase factor
+    
+P_in = 1                          # input power (watts)
+    
+phi_1_it = phi_1 + delta_phi_it   # basic phase factor + specific phase shift
+phi_2_it = phi_2 + delta_phi_it   # basic phase factor + specific phase shift
+    
+it_trans_upper = -t_1*t_2*t_3*np.exp(1j*phi_1_it)*np.exp(1j*phi_2_it)
+it_trans_lower = np.exp(2j*phi_1_it)*np.exp(2j*phi_2_it) - r_1*r_2*np.exp(2j*phi_2_it) - r_2*r_3*np.exp(2j*phi_1_it) + r_1*r_3*(t_2**2 + r_2**2)
+it_trans = it_trans_upper / it_trans_lower
+    
+it_ref_upper = r_1*np.exp(2j*phi_1_it)*np.exp(2j*phi_2_it) - r_1*r_2*r_3*np.exp(2j*phi_1_it) - r_2*(r_1**2 + t_1**2)*np.exp(2j*phi_2_it) + r_3*(r_1**2 + t_1**2)*(r_2**2 + t_2**2)
+it_ref_lower = np.exp(2j*phi_1_it)*np.exp(2j*phi_2_it) - r_1*r_2*np.exp(2j*phi_2_it) - r_2*r_3*np.exp(2j*phi_1_it) + r_1*r_3*(r_2**2 + t_2**2)
+it_ref = it_ref_upper / it_ref_lower
