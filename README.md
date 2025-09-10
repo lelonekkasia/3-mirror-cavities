@@ -15,4 +15,4 @@ optimizing params 3 mirror cavity is an exploration of the spectrum with paramet
 report plots possibly most useful file
 
 
-i keep all version of classes in case someone wants to see the mistakes i made before 
+i keep all version of classes in case someone wants to see the mistakes i made before, the one used ultimately is the ter one, however it still contains mistakes so best to see report plots file
